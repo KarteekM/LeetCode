@@ -6,8 +6,7 @@ public class ContainsDuplicate {
 	public boolean containsDuplicate(int[] nums) {
 
 		Map<Integer, Integer> numbersWithOccurenceCount = new HashMap<Integer, Integer>();
-		for (int i = 0; i < nums.length; i++) {
-			
+		for (int i = 0; i < nums.length; i++) {			
 			if(numbersWithOccurenceCount.get(nums[i]) == null)
 				numbersWithOccurenceCount.put(nums[i], 1);
 			else {
