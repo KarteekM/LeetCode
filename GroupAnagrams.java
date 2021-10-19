@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -114,10 +115,27 @@ public class GroupAnagrams {
 		return true;
 	}
 	
-	public List<List<String>> groupAnagrams(String[] strs) {
 	
-		return null;
+	//Grouping by hashcode
+	public List<List<String>> groupAnagrams(String[] strs) {
+		
+		Map<Integer,List<String>> anagramMapper = new HashMap<Integer, List<String>>();
+		for (String s : strs) {
+			char counter[] = new char[26];
+			for (Character ch : s.toCharArray()) {
+				counter[ch - 'a']++;
+			}
+
+			int hashCode = Arrays.hashCode(counter);
+			if (anagramMapper.get(hashCode) == null) {
+				anagramMapper.put(hashCode, new ArrayList<>());
+			}
+			anagramMapper.get(hashCode).add(s);
+		}
+		return new ArrayList<>(anagramMapper.values());
 	}
+	
+	//findHashCode
 
 	public static void main(String[] args) {
 
