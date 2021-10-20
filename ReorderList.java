@@ -1,7 +1,10 @@
+import java.util.Deque;
+import java.util.LinkedList;
 import java.util.Stack;
 
 public class ReorderList {
 	
+	//Using stack
 	 public void reorderList(ListNode head) {
 		 
 		 Stack<ListNode> stack = new Stack<ListNode>();
@@ -26,6 +29,41 @@ public class ReorderList {
 		 }
 	  }
 	 
+	 
+	 //Using Deque
+	 public void reorderList2(ListNode head) {
+		 
+		 Deque<ListNode> deque = new LinkedList<ListNode>();
+		 while(head!=null) {
+			 deque.addLast(head);
+			 head = head.next;
+		 }
+		 
+		 head = null;
+		 ListNode node = null;
+		while(deque.size() > 0) {
+			
+			if(null == head) {
+				node = deque.removeFirst();
+				head = node;
+			}
+			else {
+			  node.next = deque.removeFirst();
+			  node = node.next;
+			}
+			
+			if(deque.size() > 0) {
+				node.next = deque.removeLast();
+				node = node.next;
+			}
+			
+			
+		}
+		node.next = null;
+		 
+		 
+	 }
+	 
 	 public static void main(String[] args) {
 			
 			ListNode nodeObject = new ListNode();
@@ -35,7 +73,7 @@ public class ReorderList {
 			head = nodeObject.insert(head, 4);
 			head = nodeObject.insert(head, 5);
 			//nodeObject.printList(head);
-			new ReorderList().reorderList(head);
+			new ReorderList().reorderList2(head);
 			nodeObject.printList(head);
 			
 			System.out.println();
@@ -47,7 +85,7 @@ public class ReorderList {
 			head = nodeObject.insert(head, 3);
 			head = nodeObject.insert(head, 4);
 			//nodeObject.printList(head);
-			new ReorderList().reorderList(head);
+			new ReorderList().reorderList2(head);
 			nodeObject.printList(head);
 			
 			
