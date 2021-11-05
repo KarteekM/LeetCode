@@ -8,6 +8,7 @@ class ListNode3 {
 	ListNode3() {
 	}
 
+
 	ListNode3(int val) {
 		this.val = val;
 	}
@@ -99,8 +100,7 @@ public class ConvertBinaryNumberToLinkedList {
 		listNodeObject.insert(0);
 		listNodeObject.insert(0);
 		linkedlistObject = new ConvertBinaryNumberToLinkedList();
-		System.out.println(linkedlistObject.getDecimalValue(listNodeObject.next));
-
+		
 
 	}
 
