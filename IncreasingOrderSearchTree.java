@@ -1,3 +1,5 @@
+import java.util.Stack;
+
 public class IncreasingOrderSearchTree {
 	
 	TreeNode head = null, previousNode = null;
@@ -5,29 +7,66 @@ public class IncreasingOrderSearchTree {
 		// TODO Auto-generated constructor stub
 	}
 	
-	 public TreeNode increasingBST(TreeNode root) {
-		 
-		 if(null == root) {
-			 return null;
-		 }
+	public TreeNode increasingBST(TreeNode root) {
 		
-		increasingBST(root.left);
-		
-		if(null == head) {
-			head = root;
+		if (null == root) {
+			return null;
 		}
-		
-		if(previousNode != null) {
+
+		increasingBST(root.left);
+
+
+		if (previousNode != null) {
 			root.left = null;
 			previousNode.right = root;
 		}
 		
+
+		if (null == head) {
+			head = root;
+		}
+
 		previousNode = root;
 		increasingBST(root.right);
-		
-		 return null;
-	    }
+
+		return head;
+	}
 	 
+	public TreeNode increasingBST2(TreeNode root) {
+		TreeNode head = null, previousNode = null;
+		if(null == root) {
+			return null;
+		}
+		
+		Stack<TreeNode> stack = new Stack<TreeNode>();	
+		TreeNode traverser = root;
+		
+		 while(traverser != null || !stack.isEmpty()) {
+			 
+			 while(traverser != null) {
+				 stack.push(traverser);
+				 traverser = traverser.left;
+			 }
+			 
+			 traverser = stack.pop();
+			    
+			    if(null == head) {
+			    	head = traverser;
+			    }
+			    
+			    traverser.left = null;
+			    
+			    if(previousNode != null) {
+			    	previousNode.right = traverser;
+			    }
+			    
+			    previousNode = traverser;
+			    traverser = traverser.right;
+		 }
+		
+		return head;
+		
+	}
 	 public static void main(String[] args) {
 		 
 
