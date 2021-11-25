@@ -1,7 +1,6 @@
 
 public class BestTimetoBuyandSellStock {
 	
-
 	public int maxProfit(int[] prices) {
 
 		if (prices.length <= 1) {
