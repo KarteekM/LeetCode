@@ -8,7 +8,6 @@ public class AllElementsInTwoBinarySearchTrees {
 	public AllElementsInTwoBinarySearchTrees() {
 		elementsInAscendingOrder = new ArrayList<Integer>();
 	}
-
 	 public List<Integer> getAllElements(TreeNode root1, TreeNode root2) {
 		 
 		 inOrder(root1);
