@@ -41,8 +41,7 @@ public class DeepestLevelSum {
 	}
 	
 	public int deepestLeavesSum2(TreeNode root) {
-		
-		if(null == root) {
+				if(null == root) {
 			return 0;
 		}
 		
