@@ -2,6 +2,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ContainsDuplicate {
+	
+	
 
 	public boolean containsDuplicate(int[] nums) {
 
@@ -15,6 +17,12 @@ public class ContainsDuplicate {
 		}
 		return false;
 	}
+	
+	public boolean containsDuplicate2(int[] nums) {
+
+		return (nums == null)? false : nums.length != Arrays.stream(nums).distinct().count();
+	}
+	
 	
 	public static void main(String[] args) {
 		
