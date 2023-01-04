@@ -33,6 +33,35 @@ public class TopKFrequentElements {
 		return result.stream().mapToInt(Integer::intValue).toArray();
 
 	}
+	public int[] topKFrequent2(int[] nums, int k) {
+
+		Map<Integer,Integer> numberAndItsFrequency = new LinkedHashMap<>();
+
+		for(int n: nums){
+			numberAndItsFrequency.put(n, numberAndItsFrequency.getOrDefault(n,0)+1);
+		}
+
+		List<Integer>[] bucket = new ArrayList[nums.length+1];
+
+		for(Map.Entry<Integer, Integer> entry: numberAndItsFrequency.entrySet()){
+
+			if(bucket[entry.getValue()] == null){
+				bucket[entry.getValue()] = new ArrayList<Integer>();
+			}
+			bucket[entry.getValue()].add(entry.getKey());
+		}
+
+		List<Integer> result = new ArrayList<>();
+
+		for(int i=bucket.length-1;i>=0 && result.size()<k;i--){
+			if(bucket[i]!= null){
+				result.addAll(bucket[i]);
+			}
+		}
+
+		return result.stream().mapToInt(i -> i).toArray();
+
+	}
 
 	public static void main(String[] args) {
 		TopKFrequentElements elements = new TopKFrequentElements();
