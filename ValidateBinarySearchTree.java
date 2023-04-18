@@ -1,7 +1,5 @@
 package blind75.trees;
 
-import com.sun.source.tree.*;
-
 public class ValidateBinarySearchTree {
 
     //Without taking help of MIN and MAX
@@ -11,12 +9,12 @@ public class ValidateBinarySearchTree {
             return false;
         }
 
-        return isBinaryTree(root,null,null);
+        return isBinarySearchTree(root,null,null);
 
     }
 
 
-    private boolean isBinaryTree(TreeNode root, TreeNode left, TreeNode right) {
+    private boolean isBinarySearchTree(TreeNode root, TreeNode left, TreeNode right) {
 
         if(null == root){
             return true;
@@ -30,7 +28,7 @@ public class ValidateBinarySearchTree {
             return  false;
         }
 
-        return isBinaryTree(root.left, left, root) && isBinaryTree(root.right, root, right);
+        return isBinarySearchTree(root.left, left, root) && isBinarySearchTree(root.right, root, right);
     }
 
     //Taking help of MIN and MAX
@@ -40,16 +38,16 @@ public class ValidateBinarySearchTree {
             return false;
         }
 
-        return isBinaryTree2(root, Integer.MAX_VALUE,Integer.MIN_VALUE);
+        return isBinarySearchTree2(root, Integer.MAX_VALUE,Integer.MIN_VALUE);
 
     }
 
-    private boolean isBinaryTree2(TreeNode root, int left, int right) {
+    private boolean isBinarySearchTree2(TreeNode root, int left, int right) {
         if (root == null) return true;
         if(root.val <= left || root.val >=  right){
             return false;
         }
-        return isBinaryTree2(root.left,left,root.val) && isBinaryTree2(root.right,root.val,right);
+        return isBinarySearchTree2(root.left,left,root.val) && isBinarySearchTree2(root.right,root.val,right);
     }
 
     //InOrder
